@@ -47,6 +47,8 @@ class Group:
 
     # Добавляем студента в группу
     def append(self, stud):
+        if type(stud) != Student:
+            raise TypeError("Атрибут содержит тип {} вместо Student".format(type(stud)))
         self.students.append(stud)
 
     def __str__(self):

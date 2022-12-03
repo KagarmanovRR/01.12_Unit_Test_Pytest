@@ -29,3 +29,19 @@ def test_students_lt():
                      {"отлично": 5, "хорошо": 3, "удовлетворительно": 2, "неудовлетворительно": 0})
 
     assert (stud_1 < stud_2) == False
+
+# Проверка при добавлении студента в группу. (неверный тип)
+def test_wrong_type_Group():
+    with pytest.raises(TypeError):
+        group_1 = Group("ИС", 195, "Смирнов И.В.")
+        group_1.append("Петров А.Н.")
+
+# Проверка при добавлении сотрудника в отдел (добавтли правильно)
+def test_append_Group():
+    with pytest.raises(TypeError):
+        stud_1 = Student(1, 'Кагарманов Родион Радикович', 'м', 18, '890478747976', 'test@test,ru', 2,
+                         {"отлично": 5, "хорошо": 3, "удовлетворительно": 2, "неудовлетворительно": 0})
+        group_1 = Group("ИС", 195, "Смирнов И.В.")
+        count_before = len(group_1.students)
+        group_1.append(group_1)
+        assert count_before == len(group_1.students) - 1
