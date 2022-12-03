@@ -2,6 +2,8 @@ class Student:
     marks = []
     #ФИО, пол, возраст, телефон, почта, курс, оценки
     def __init__(self, number, fio, gender, age, tel, email, kurs, marks):
+        if type(number) != int:
+            raise TypeError("Номер студента должен быть числовым")
         self.number = int(number)
         self.fio = fio
         self.gender = gender
